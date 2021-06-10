@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-// Time Complexity 
+// Time Complexity - O(N)
 
 class Node {
     public:
