@@ -51,17 +51,18 @@ Node* reverseK(Node* &head, int k) {
     while(currptr != NULL && count < k) {
         nextptr = currptr->next;
         currptr->next = prevptr;
-
         prevptr = currptr;
-        currptr = nextptr;  
+        currptr = nextptr;
         count++;
     }
+
     if(nextptr != NULL) {
         head->next = reverseK(nextptr, k);
     }
+
     return prevptr;
-    
 }
+
 
 int main() {
     Node* head = nullptr;
