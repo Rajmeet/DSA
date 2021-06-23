@@ -67,16 +67,57 @@ vector<int> maxSlidingWindow(int arr[], int n, int k) {
     return ans;
 }
 
+vector<int> windowMaximum(int arr[], int n, int k) {
+    vector<int> ans;
+    deque<int> dq; // a queue of indices and not elements
+    
+    // for the first window
+    for(int i = 0; i < k; i++) {
+        // the queue should be in decreasing order (second cond) 
+        while(!dq.empty() && arr[dq.back()] < arr[i]) { 
+            dq.pop_back();
+        } 
+        dq.push_back(i);
+    }
+    ans.push_back(arr[dq.front()]); // since the first element is the max element
+
+    for(int i = k; i < n; i++) {
+        if(dq.front() == i-k) { // if the index becomes invalid
+            dq.pop_front();
+        }
+        // dq.push_front(i);
+        while(!dq.empty() && arr[dq.back()] < arr[i]) {  // same condition
+            dq.pop_back();
+        } 
+        dq.push_back(i);
+
+        ans.push_back(arr[dq.front()]);
+    }
+
+    return ans;
+
+}
+
+
+
 int main() {
     
     int arr[] = { 12, 1, 78, 90, 57, 89, 56 };
     int n = sizeof(arr) / sizeof(arr[0]);
     int k = 3;
     printMaxK(arr, n, k);
+    
     cout << endl << endl;
+    
     vector<int> ans = maxSlidingWindow(arr, n, k);
     for(auto x: ans) {
         cout << x << " ";
     }
     
+    cout << endl << endl;
+
+    vector<int> ans2 = windowMaximum(arr, n, k);
+    for(auto i: ans2) {
+        cout << i << " ";
+    }
 }
