@@ -1,3 +1,2 @@
 # DSA
-Data Structures and Algorithms Learning Journey
-Questions from Apna College DSA Course, Leetcode, Hackerrank etc.
+Data Structures and Algorithms Learning Journey in C++ and Python.
