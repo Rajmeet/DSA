@@ -18,9 +18,6 @@
 # Explanation: The arrays we are merging are [1] and [].
 # The result of the merge is [1].
 
-from heapq import merge
-
-
 class Solution(object):
     def merge(self, nums1, m, nums2, n):
         """

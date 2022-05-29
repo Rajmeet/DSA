@@ -18,16 +18,18 @@ class Solution(object):
         :type nums: List[int]
         :rtype: None Do not return anything, modify nums in-place instead.
         """
-        ans = []
-        zero_count = 0
-        for i in nums:
-            if i == 0:
-                zero_count += 1
-            else:
-                ans.append(i)
-        for i in range(zero_count):
-            ans.append(0)
-        return ans
+        l = 0
+        r = 1
+        while r < len(nums):
+            if nums[l] == 0 and nums[r] == 0:
+                r += 1
+
+            elif nums[l] == 0:
+                nums[l], nums[r] = nums[r], nums[l]
+                l += 1
+                r += 1 
+            
+        return nums
 
 s = Solution()
 nums = [0,1,0,3,12]
