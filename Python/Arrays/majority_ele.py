@@ -4,7 +4,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        # O(N) Time and O(1) Space
+        # O(N) Time and O(1) Space - Boyer Moore's Voting Algorithm
         count = res = 0
         for num in nums:
             if count == 0:
