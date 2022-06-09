@@ -1,17 +1,14 @@
-def power_sets(s):
+def power_sets(arr):
     ans = []
-    def helper(s, i, temp=[]):
-        if i > len(s)-1:
-            if temp not in ans:
-                ans.append(temp)
-            return ans            
-
-        # including
-        helper(s, i+1, temp + [s[i]])
-
-        # exlcuding
-        helper(s, i+1, temp)
-    helper(s, 0, [])
+    def helper(i, arr, temp):
+        if i >= len(arr):
+            ans.append(temp)
+            return
+        # include
+        helper(i+1, arr, temp+[arr[i]])
+        # exclude 
+        helper(i+1, arr, temp)
+    helper(0, arr, [])
     return ans
 
-print(power_sets('122'))        
+print(power_sets([1,2,3]))
