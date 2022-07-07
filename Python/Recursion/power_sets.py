@@ -1,14 +1,20 @@
+import copy
 def power_sets(arr):
     ans = []
-    def helper(i, arr, temp):
-        if i >= len(arr):
-            ans.append(temp)
-            return
+    subset = []
+    n = len(arr) - 1
+    def helper(i):
+        if i > n:
+            ans.append(subset[:])
+            return 
         # include
-        helper(i+1, arr, temp+[arr[i]])
-        # exclude 
-        helper(i+1, arr, temp)
-    helper(0, arr, [])
+        subset.append(arr[i])
+        helper(i+1)
+
+        # exclude
+        subset.pop()
+        helper(i+1)
+    helper(0)
     return ans
 
 print(power_sets([1,2,3]))
