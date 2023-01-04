@@ -31,22 +31,25 @@ def getTotalRounds(n):
 
 class Solution:
     def minimumRounds(self, tasks: List[int]) -> int:
-        # Approach 1
         c = Counter(tasks)
-        total = 0
-        for i in c:      
-            if c[i] == 1:
-                return -1
-            total += getTotalRounds(c[i])
-        print(total)
+        def approach1():
+            total = 0
+            for i in c:      
+                if c[i] == 1:
+                    return -1
+                total += getTotalRounds(c[i])
+            return total
 
         # Approach 2
-        total = 0
-        for i in c:
-            if c[i] == 1:
-                return -1
-            total += (c[i] + 2) // 3
-        return total
+        def approach2():
+            total = 0
+            for i in c:
+                if c[i] == 1:
+                    return -1
+                total += (c[i] + 2) // 3
+            return total
+        
+        return approach2()
 
 print(Solution().minimumRounds([2,2,3,3,2,4,4,4,4,4]))
 print(Solution().minimumRounds([2,3,3]))

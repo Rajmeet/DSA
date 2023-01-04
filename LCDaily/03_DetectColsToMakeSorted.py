@@ -25,21 +25,24 @@ from typing import List
 
 class Solution:
     def minDeletionSize(self, strs: List[str]) -> int:
-        # Approach 1
-        count = 0
-        for i in range(len(strs[0])):
-            for j in range(len(strs)-1):
-                if strs[j][i] > strs[j+1][i]:
-                    count += 1
-                    break
-        print(count)
+        def approach1():
+            count = 0
+            for i in range(len(strs[0])):
+                for j in range(len(strs)-1):
+                    if strs[j][i] > strs[j+1][i]:
+                        count += 1
+                        break
+            return count
 
-        # Approach 2    
-        for column in zip(*strs):
-            if list(column) != sorted(column):
-                count += 1
-                
-        return count
+        def approach2():
+            count = 0
+            for column in zip(*strs):
+                if list(column) != sorted(column):
+                    count += 1
+                    
+            return count
+        
+        return approach2()
 
 print(Solution().minDeletionSize(["cba","daf","ghi"]))
 print(Solution().minDeletionSize(["a","b"]))
