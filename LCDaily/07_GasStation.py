@@ -1,3 +1,4 @@
+# 134. Gas Station
 # There are n gas stations along a circular route, where the amount of gas at the ith station is gas[i].
 
 # You have a car with an unlimited gas tank and it costs cost[i] of gas to travel from the ith station to its next (i + 1)th station. You begin the journey with an empty tank at one of the gas stations.
@@ -42,17 +43,26 @@ class Solution:
 
         # Approach 2: Greedy - O(N)
         def approach2():
-            total = 0
+            # total travel
+            total = 0 
+            # current index
             start = 0
-            tank = 0
-            
+            # current tank levels
+            tank = 0 
+
             for i in range(len(gas)):
+                # update the tank with the gas it filled at i - the cost for i
                 tank += (gas[i] - cost[i])
+
                 if tank < 0:
+                    # ignore this value
                     start = i + 1
+                    # update total 
                     total += tank
+                    # reset the tank
                     tank = 0
-            return start if total + tank >= 0 else -1
+            
+            return start if (tank+total) >= 0 else -1
 
         return approach2()
 
